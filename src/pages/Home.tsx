@@ -9,7 +9,6 @@ export default function Home() {
       <Header />
       <Typography>Home</Typography>
       <Typography>하이여</Typography>
-      <Typography>하이여</Typography>
       <Link to="/about">정보보기</Link>
     </Box>
   )
