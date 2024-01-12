@@ -1,12 +1,12 @@
 import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./Home"
-import About from "./About"
+import SignIn from "./SignIn"
 
-const AnonymousUserRoute: React.FC = () => (
+const AnonymousUserRoute = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
+    <Route path="/sign-in" element={<SignIn />} />
   </Routes>
 )
 
