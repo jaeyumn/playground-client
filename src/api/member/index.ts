@@ -10,10 +10,6 @@ export interface SignUpRequestBody {
   email: string
 }
 
-export interface AddEmailRequestBody {
-  email: string
-}
-
 export interface SendVerificationEmailRequestBody {
   email: string
 }
@@ -30,12 +26,6 @@ export const signUpApi = async (
   requestBody: SignUpRequestBody,
 ): Promise<AxiosResponse> => {
   return basicAxios.post("/members/sign-up", requestBody)
-}
-
-export const addEmailApi = async (
-  requestBody: AddEmailRequestBody,
-): Promise<AxiosResponse> => {
-  return basicAxios.post("/members/me/emails", requestBody)
 }
 
 export const sendVerificationEmailApi = async (

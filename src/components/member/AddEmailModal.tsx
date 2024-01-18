@@ -7,11 +7,7 @@ import ErrorIcon from "@mui/icons-material/Error"
 import axios from "axios"
 import { ErrorResponse } from "api"
 import { useAlert } from "hooks/useAlert"
-import {
-  addEmailApi,
-  sendVerificationEmailApi,
-  verificationEamilApi,
-} from "api/member"
+import { sendVerificationEmailApi, verificationEamilApi } from "api/member"
 
 interface Props {
   open: boolean
@@ -133,11 +129,10 @@ const AddEmailModal = ({ open, handleClose, onSuccess }: Props) => {
     }
   }
 
-  const handleAddEmailClick = async () => {
+  const handleAddEmailClick = () => {
     if (!checkCode || !validateEmail) {
       return
     }
-    await addEmailApi({ email })
     addSuccess("이메일이 추가되었습니다.")
     onSuccess(email)
     handleClose()
