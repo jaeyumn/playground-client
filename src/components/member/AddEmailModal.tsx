@@ -173,6 +173,7 @@ const AddEmailModal = ({ open, handleClose, onSuccess }: Props) => {
           sx={{
             width: 120,
             height: 40,
+            fontSize: 12,
           }}
           onClick={sendEmail ? handleRewriteEmailClick : handleSendEmailClick}
         >
@@ -232,8 +233,10 @@ const AddEmailModal = ({ open, handleClose, onSuccess }: Props) => {
               variant="contained"
               color="secondary"
               sx={{
-                width: 140,
+                width: 120,
+                height: 40,
                 ml: 3,
+                fontSize: 12,
               }}
               onClick={
                 timeLeft === 0

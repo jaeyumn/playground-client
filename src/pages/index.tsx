@@ -1,14 +1,15 @@
 import React from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Home from "./Home"
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 
 const AnonymousUserRoute = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
+    <Route path="/" element={<Navigate to="/sign-in" />} />
     <Route path="/sign-in" element={<SignIn />} />
     <Route path="/sign-up" element={<SignUp />} />
+    <Route path="/home" element={<Home />} />
   </Routes>
 )
 

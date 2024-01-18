@@ -1,7 +1,38 @@
 import { Box, Button, Divider, TextField, Typography } from "@mui/material"
+import { SignInRequestBody } from "api/auth"
+import useSignIn from "hooks/member/useSignIn"
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 const SignIn = () => {
+  const navigate = useNavigate()
+
+  const [signInRequestBody, setSignInRequestBody] =
+    React.useState<SignInRequestBody>({
+      username: "",
+      password: "",
+    })
+
+  const inUsernameChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignInRequestBody({
+      ...signInRequestBody,
+      username: e.target.value,
+    })
+  }
+
+  const inPasswordChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignInRequestBody({
+      ...signInRequestBody,
+      password: e.target.value,
+    })
+  }
+
+  const { fetch: signIn } = useSignIn({ requestBody: signInRequestBody })
+
+  const onSignUpButtonClick = () => {
+    navigate("/sign-up")
+  }
+
   return (
     <Box
       sx={{
@@ -48,7 +79,12 @@ const SignIn = () => {
               justifyContent: "center",
             }}
           >
-            <TextField sx={{ width: 300 }} label="아이디" variant="standard" />
+            <TextField
+              sx={{ width: 300 }}
+              label="아이디"
+              variant="standard"
+              onChange={inUsernameChanged}
+            />
           </Box>
           <Box
             sx={{
@@ -63,6 +99,7 @@ const SignIn = () => {
               label="비밀번호"
               variant="standard"
               type="password"
+              onChange={inPasswordChanged}
             />
           </Box>
           <Box
@@ -83,6 +120,7 @@ const SignIn = () => {
                 color: "black",
               }}
               variant="contained"
+              onClick={signIn}
             >
               로그인
             </Button>
@@ -91,7 +129,7 @@ const SignIn = () => {
               <Divider orientation="vertical" variant="middle" flexItem />
               <Button>비밀번호 찾기</Button>
             </Box>
-            <Button>회원이 아니신가요?</Button>
+            <Button onClick={onSignUpButtonClick}>회원이 아니신가요?</Button>
           </Box>
         </Box>
       </Box>
