@@ -59,64 +59,162 @@ const SignUp = () => {
   const { fetch: signUp } = useSignUp({ requestBody: signUpRequestBody })
 
   return (
-    <Box>
-      <Typography variant="h5" gutterBottom>
-        회원가입
-      </Typography>
-      <TextField
-        label="아이디"
-        variant="outlined"
-        fullWidth
-        value={signUpRequestBody.username}
-        onChange={inUsernameChanged}
-      />
-      <TextField
-        label="비밀번호"
-        type="password"
-        variant="outlined"
-        fullWidth
-        value={signUpRequestBody.password}
-        onChange={inPasswordChanged}
-      />
-      <TextField
-        label="닉네임"
-        variant="outlined"
-        fullWidth
-        value={signUpRequestBody.nickname}
-        onChange={inNicknameChanged}
-      />
-      <TextField
-        label="이름"
-        variant="outlined"
-        fullWidth
-        value={signUpRequestBody.name}
-        onChange={inNameChagned}
-      />
-      <TextField
-        label="이메일"
-        variant="outlined"
-        fullWidth
-        value={signUpRequestBody.email}
-        InputProps={{ readOnly: true }}
-      />
-      <Button
-        disableElevation
-        variant="contained"
-        onClick={() => setAddEmailModalOpen(true)}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Box
+        sx={{
+          height: 500,
+          width: 400,
+          mt: 10,
+        }}
       >
-        이메일 추가
-      </Button>
-      {addEmailModalOpen ? (
-        <AddEmailModal
-          open={addEmailModalOpen}
-          handleClose={() => setAddEmailModalOpen(false)}
-          onSuccess={handleEmailAddSuccess}
-        />
-      ) : null}
-      <Button disableElevation variant="contained" onClick={signUp}>
-        회원가입
-      </Button>
-      <Button onClick={() => navigate(-1)}>취소</Button>
+        <Box
+          sx={{
+            height: "20%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            회원가입
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            height: "80%",
+            width: "100%",
+            border: 1,
+            borderRadius: 1,
+            borderColor: "lightgray",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Box
+            sx={{
+              height: "20%",
+              width: "100%",
+              display: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              sx={{ width: 300 }}
+              label="아이디"
+              variant="standard"
+              fullWidth
+              value={signUpRequestBody.username}
+              onChange={inUsernameChanged}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "20%",
+              width: "100%",
+              display: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              sx={{ width: 300 }}
+              label="비밀번호"
+              type="password"
+              variant="standard"
+              value={signUpRequestBody.password}
+              onChange={inPasswordChanged}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "20%",
+              width: "100%",
+              display: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              sx={{ width: 300 }}
+              label="닉네임"
+              variant="standard"
+              value={signUpRequestBody.nickname}
+              onChange={inNicknameChanged}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "20%",
+              width: "100%",
+              display: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              sx={{ width: 300 }}
+              label="이름"
+              variant="standard"
+              value={signUpRequestBody.name}
+              onChange={inNameChagned}
+            />
+          </Box>
+          <Box
+            sx={{
+              height: "20%",
+              width: "100%",
+              display: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              sx={{ width: 300 }}
+              label="이메일을 추가하세요."
+              variant="standard"
+              value={signUpRequestBody.email}
+              InputProps={{ readOnly: true }}
+            />
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              display: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              sx={{ mb: 1 }}
+              disableElevation
+              variant="contained"
+              onClick={() => setAddEmailModalOpen(true)}
+            >
+              이메일 추가
+            </Button>
+          </Box>
+          {addEmailModalOpen ? (
+            <AddEmailModal
+              open={addEmailModalOpen}
+              handleClose={() => setAddEmailModalOpen(false)}
+              onSuccess={handleEmailAddSuccess}
+            />
+          ) : null}
+        </Box>
+        <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
+          <Button
+            sx={{ backgroundColor: "gold", color: "black" }}
+            variant="contained"
+            onClick={signUp}
+          >
+            회원가입
+          </Button>
+          <Button onClick={() => navigate(-1)}>취소</Button>
+        </Box>
+      </Box>
     </Box>
   )
 }
