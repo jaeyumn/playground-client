@@ -1,4 +1,5 @@
-import { basicAxios } from "api"
+import { MemberDetail } from "_types/member"
+import { authAxios, basicAxios } from "api"
 import { AxiosResponse } from "axios"
 
 // REQUEST
@@ -20,6 +21,7 @@ export interface VerificationEmailCodeRequestBody {
 }
 
 // RESPONSE
+export type MyMemberDetailResponseBody = MemberDetail
 
 // API
 export const signUpApi = async (
@@ -38,4 +40,10 @@ export const verificationEamilApi = async (
   requestBody: VerificationEmailCodeRequestBody,
 ): Promise<AxiosResponse> => {
   return basicAxios.post("/emails/verification/check", requestBody)
+}
+
+export const myMemberDetailApi = async (): Promise<
+  AxiosResponse<MyMemberDetailResponseBody>
+> => {
+  return authAxios.post("/members/me")
 }

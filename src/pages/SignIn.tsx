@@ -1,6 +1,6 @@
 import { Box, Button, Divider, TextField, Typography } from "@mui/material"
 import { SignInRequestBody } from "api/auth"
-import useSignIn from "hooks/member/useSignIn"
+import useSignIn from "hooks/auth/useSignIn"
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -31,6 +31,12 @@ const SignIn = () => {
 
   const onSignUpButtonClick = () => {
     navigate("/sign-up")
+  }
+
+  const onEnterKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      signIn()
+    }
   }
 
   return (
@@ -100,6 +106,7 @@ const SignIn = () => {
               variant="standard"
               type="password"
               onChange={inPasswordChanged}
+              onKeyDown={onEnterKeyDown}
             />
           </Box>
           <Box

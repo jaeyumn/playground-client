@@ -1,6 +1,6 @@
+import React from "react"
 import { Box, Divider, Typography } from "@mui/material"
 import Header from "components/header/Header"
-import React from "react"
 
 const Home = () => {
   return (

@@ -1,8 +1,12 @@
-import { Box, Button, Menu, MenuItem } from "@mui/material"
+import { Box, Button, Menu, MenuItem, Typography } from "@mui/material"
 import React from "react"
 import PersonIcon from "@mui/icons-material/Person"
+import useLogout from "hooks/auth/useLogout"
+import { useNavigate } from "react-router-dom"
 
 const User = () => {
+  const navigate = useNavigate()
+
   const [accountAnchor, setAccountAnchor] = React.useState<null | HTMLElement>(
     null,
   )
@@ -20,11 +24,15 @@ const User = () => {
 
   const myPageHandleClick = () => {
     setAccountAnchor(null)
+    navigate("/my-page")
   }
 
-  const logoutHandleClick = () => {
-    setAccountAnchor(null)
-  }
+  const { fetch: logout } = useLogout()
+
+  const settings = [
+    { name: "마이페이지", onClick: myPageHandleClick },
+    { name: "로그아웃", onClick: () => logout(accountButtonHandleClose) },
+  ]
 
   return (
     <Box
@@ -44,8 +52,11 @@ const User = () => {
         open={accountMenuOpen}
         onClose={accountButtonHandleClose}
       >
-        <MenuItem onClick={myPageHandleClick}>마이페이지</MenuItem>
-        <MenuItem onClick={logoutHandleClick}>로그아웃</MenuItem>
+        {settings.map(setting => (
+          <MenuItem key={setting.name} onClick={setting.onClick}>
+            <Typography textAlign="center">{setting.name}</Typography>
+          </MenuItem>
+        ))}
       </Menu>
     </Box>
   )

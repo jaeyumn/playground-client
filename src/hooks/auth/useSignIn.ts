@@ -29,7 +29,7 @@ const useSignIn = ({ requestBody }: Props) => {
       setIsFetching(true)
       await signInApi(requestBody)
       addSuccess("로그인에 성공했습니다.")
-      navigate("/home")
+      navigate("/")
     } catch (e) {
       if (axios.isAxiosError(e)) {
         const { response } = e
