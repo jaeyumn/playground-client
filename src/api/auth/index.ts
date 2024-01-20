@@ -1,4 +1,4 @@
-import { authAxios } from "api"
+import { authAxios, basicAxios } from "api"
 import { AxiosResponse } from "axios"
 
 export const SIGN_IN_URI = "/auth/sign-in"
@@ -11,7 +11,7 @@ export interface SignInRequestBody {
 export const signInApi = async (
   requestBody: SignInRequestBody,
 ): Promise<AxiosResponse> => {
-  return authAxios.post(SIGN_IN_URI, requestBody)
+  return basicAxios.post(SIGN_IN_URI, requestBody)
 }
 
 export const LOGOUT_URI = "/auth/logout"
