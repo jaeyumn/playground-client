@@ -3,6 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import useReissue from "hooks/auth/useReissue"
 import { Backdrop, CircularProgress } from "@mui/material"
 import { getBackdropStore } from "store/backdropStore"
+import MemberGnb from "layouts/MemberGnb"
+import MemberLnb from "layouts/MemberLnb"
 import Home from "./Home"
 import SignIn from "./SignIn"
 import SignUp from "./SignUp"
@@ -10,7 +12,11 @@ import SignUp from "./SignUp"
 const MemberRoute = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route element={<MemberGnb />}>
+        <Route element={<MemberLnb />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Route>
     </Routes>
   )
 }

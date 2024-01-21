@@ -12,7 +12,7 @@ const HeaderMenus = () => {
       }}
     >
       <Button sx={{ flex: 1, textAlign: "center", color: "black" }}>
-        놀이터
+        커뮤니티
       </Button>
       <Typography sx={{ flex: 1, textAlign: "center" }}>Menu 2</Typography>
       <Typography sx={{ flex: 1, textAlign: "center" }}>Menu 3</Typography>

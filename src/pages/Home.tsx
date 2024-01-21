@@ -1,23 +1,10 @@
 import React from "react"
-import { Box, Divider, Typography } from "@mui/material"
-import Header from "components/header/Header"
+import { Box, Typography } from "@mui/material"
 
 const Home = () => {
   return (
     <Box>
-      <Header />
-      <Divider />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <Typography>하이여</Typography>
-      </Box>
+      <Typography>하이여</Typography>
     </Box>
   )
 }

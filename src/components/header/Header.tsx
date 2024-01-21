@@ -11,6 +11,7 @@ const Header = () => {
         height: 50,
         width: "100%",
         display: "flex",
+        borderBottom: "1px solid #ccc",
       }}
     >
       <Logo />
